@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isba Keshwani | Physical oceanography at UC Irvine</title>
+<meta name="description" content="Isba Keshwani is a PhD candidate in Earth System Science at UC Irvine, studying how dense water sinks and spreads across the ocean floor with horizontal convection simulations.">
+<meta property="og:title" content="Isba Keshwani">
+<meta property="og:description" content="Simulating how dense water sinks and spreads across the ocean floor.">
+<meta property="og:image" content="assets/poster.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2312204a'/%3E%3Cpath d='M0 9h32' stroke='%23b5402c' stroke-width='4'/%3E%3Cpath d='M0 22q10-12 32 0' fill='%231c50a3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="depth" aria-hidden="true"><i id="depth-mark"></i></div>
+
+<header class="surface">
+  <div class="wrap">
+    <nav class="top" aria-label="Main">
+      <a class="home" href="#top">Isba Keshwani</a>
+      <a href="#sim">Simulation</a>
+      <a href="#research">Research</a>
+      <a href="#about">About</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="hero" id="top">
+      <h1>Isba Keshwani</h1>
+      <p class="lede">I simulate how dense water sinks and spreads across the ocean floor.</p>
+      <p class="who">PhD candidate in Earth System Science, University of California, Irvine</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="surface lab" id="sim" aria-labelledby="sim-h">
+  <div class="wrap">
+    <h2 id="sim-h" style="margin-bottom:0.35em">Try it: cool the left, warm the right</h2>
+    <p class="note" style="margin-top:0;margin-bottom:18px">This runs in your browser. Water is cooled at the surface on the left and warmed on the right, and nothing else drives it. Press Restart to watch the dense water form again.</p>
+
+    <div class="strip-label"><span>Surface cooled</span><span>Surface warmed</span></div>
+    <div class="strip" id="forcing-strip" aria-hidden="true"></div>
+    <div class="stage">
+      <canvas id="sim-canvas" role="img" aria-label="Live simulation of horizontal convection. Dense water sinks on the left, spreads along the bottom, and flows over two ridges."></canvas>
+    </div>
+    <div class="xticks" aria-hidden="true"><span>x = −4</span><span>−2</span><span>0</span><span>2</span><span>4</span></div>
+    <div class="readout" id="readout" aria-live="off">Hover over the water to read the buoyancy.</div>
+
+    <div class="controls">
+      <div class="btns">
+        <button class="primary" id="play" aria-pressed="false">Pause</button>
+        <button id="restart">Restart</button>
+      </div>
+      <fieldset>
+        <legend>Sea-floor ridges</legend>
+        <div class="seg">
+          <label><input type="radio" name="ridges" value="0"><span>None</span></label>
+          <label><input type="radio" name="ridges" value="1"><span>One</span></label>
+          <label><input type="radio" name="ridges" value="2" checked><span>Two</span></label>
+        </div>
+      </fieldset>
+      <div>
+        <label class="lab-l" for="forcing">Surface forcing <output id="forcing-out" for="forcing">0.06</output></label>
+        <input id="forcing" type="range" min="0.02" max="0.1" step="0.01" value="0.06">
+      </div>
+      <div>
+        <label class="lab-l" for="speed">Speed</label>
+        <input id="speed" type="range" min="1" max="3" step="1" value="1">
+      </div>
+      <label class="check"><input id="noise" type="checkbox"> Add noise to the forcing</label>
+      <div class="lab-l" style="margin:0 0 8px">t = <span id="time">0</span></div>
+    </div>
+
+    <div class="legend">
+      <div class="bar" id="legend-bar" aria-hidden="true"></div>
+      <div class="row"><span>Denser <span id="legend-lo">−0.06</span></span><span>0</span><span>Lighter <span id="legend-hi">+0.06</span></span></div>
+    </div>
+    <p class="note" id="motion-note" hidden>Your system asks for less motion, so the animation starts paused. Press Play to run it.</p>
+    <p class="note">This is a simplified two-dimensional model with smooth, low-Reynolds-number flow. The picture is stretched vertically (×<span id="stretch">2</span>) so the thin ocean layer is readable. Changing the forcing or the ridges restarts the run. The research simulations are the full Oceananigans.jl runs shown below.</p>
+  </div>
+</section>
+
+<section class="surface band" style="padding-top:0" aria-labelledby="movie-h">
+  <div class="wrap movie">
+    <video id="movie" src="assets/convection.mp4" poster="assets/poster.jpg" muted loop playsinline controls preload="metadata" aria-label="Oceananigans.jl simulation of dense water sinking on the left and spreading along the bottom over two ridges"></video>
+    <div>
+      <h2 id="movie-h">The full simulation</h2>
+      <p>The same setup in an Oceananigans.jl run: dense water forms at the surface on the left, sinks, and spreads along the bottom until it meets the ridges. Blue is denser water, red is lighter. Time is nondimensional.</p>
+    </div>
+  </div>
+</section>
+
+<section class="shallow band" id="about" aria-labelledby="about-h">
+  <div class="wrap about">
+    <div>
+      <h2 id="about-h">About</h2>
+      <dl class="facts">
+        <dt>Now</dt><dd>PhD candidate, Earth System Science, UC Irvine</dd>
+        <dt>Advisor</dt><dd>Henri Drake</dd>
+        <dt>Before</dt><dd>BS in Astrophysics, UCLA, 2023</dd>
+        <dt>Tools</dt><dd>Julia, Python, Oceananigans.jl, GPUs and HPC clusters</dd>
+      </dl>
+    </div>
+    <div>
+      <p>I study how the deepest layer of the ocean is built and kept in place. I run numerical experiments on GPUs, mostly with Oceananigans.jl in Julia, and analyze them with tools such as water mass transformation.</p>
+      <p>I advanced to candidacy and wrote a proposal for the three chapters of my thesis. Along the way I ran a grid convergence test to find the resolution needed to resolve the plume and its boundary layer, then scaled the simulations up to three dimensions and higher resolution on UCI's HPC3 and NCSA Delta.</p>
+      <p>Before oceanography I worked on binary stars at UCLA, led an undergraduate physics research group, and modeled a statistical mechanics system in Python.</p>
+    </div>
+  </div>
+</section>
+
+<section class="deep band" id="research" aria-labelledby="research-h">
+  <div class="wrap">
+    <div class="intro">
+      <h2 id="research-h">Research</h2>
+      <p>Antarctic Bottom Water forms when dense water sinks near Antarctica and spreads along the sea floor. Horizontal convection, a fluid driven only by heating and cooling at its top surface, is the simplest model of that process. My thesis starts there and adds ingredients one at a time: topography, time-varying surface forcing, wind and rotation.</p>
+    </div>
+    <ul class="rows">
+      <li>
+        <div class="when"><b>June 2026, September 2026</b>Poster, Gordon Research Conference on Ocean Mixing<br>Talk, CalGFD, UCLA</div>
+        <div><h3>Topographic effects on abyssal stratification and turbulent mixing in horizontal convection</h3>
+        <p>How ridges on the sea floor change the layering of the deep ocean and where it mixes. With Henri Drake.</p></div>
+      </li>
+      <li>
+        <div class="when"><b>September 2025</b>Poster, Fluid Dynamics of Sustainability and the Environment Summer School, University of Cambridge</div>
+        <div><h3>Horizontal convection as a model for Southern Ocean dynamics</h3>
+        <p>Using the simplest buoyancy-driven flow as a conceptual model of Antarctic Bottom Water formation. With G. Voet and Henri Drake.</p></div>
+      </li>
+      <li>
+        <div class="when"><b>June 2024</b>Poster, Gordon Research Conference on Ocean Mixing</div>
+        <div><h3>Topographically constrained buoyancy-driven horizontal convection</h3>
+        <p>An early look at how sea-floor shape constrains the flow. With G. Voet and Henri Drake.</p></div>
+      </li>
+    </ul>
+    <p style="margin-top:1.6em;color:var(--on-deep-soft)">My simulation and analysis code is on <a href="https://github.com/ikeshwani">GitHub</a>. The simulations use <a href="https://github.com/CliMA/Oceananigans.jl">Oceananigans.jl</a>.</p>
+  </div>
+</section>
+
+<section class="deep band" id="teaching" aria-labelledby="teach-h" style="padding-top:0">
+  <div class="wrap">
+    <h2 id="teach-h" style="border-top:1px solid rgba(231,237,248,0.28);padding-top:1.4em">Teaching and mentoring</h2>
+    <div class="two">
+      <ul>
+        <li>Teaching assistant at UC Irvine for Atmospheric Dynamics, Introduction to Earth System Science, and Introduction to Oceanography, with about 400 students in each of the last two.</li>
+        <li>Wrote discussion-section lessons, homework solutions and grading rubrics. Mentored undergraduate learning assistants.</li>
+      </ul>
+      <ul>
+        <li>Mentored an undergraduate on a senior project about horizontal convection with time-varying surface forcing.</li>
+        <li>Served as the elected graduate student representative to the department, 2025 to 2026.</li>
+        <li>GAANN Fellowship (US Department of Education) and an NSF ACCESS allocation on NCSA Delta.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="abyss band contact" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <h2 id="contact-h">Contact</h2>
+    <a href="mailto:ikeshwan@uci.edu">ikeshwan@uci.edu</a>
+    <ul>
+      <li><a href="https://github.com/ikeshwani">github.com/ikeshwani</a></li>
+      <li><a href="https://www.linkedin.com/in/isba-keshwani">linkedin.com/in/isba-keshwani</a></li>
+    </ul>
+  </div>
+</section>
+<footer class="abyss"><div class="wrap">Earth System Science, University of California, Irvine</div></footer>
+
+<script src="assets/hc-core.js"></script>
+<script src="assets/hc-ui.js"></script>
+</body>
+</html>

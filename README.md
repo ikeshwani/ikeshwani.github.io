@@ -1,16 +1,17 @@
-## Hi there 👋
+# Isba Keshwani: research site
 
-<!--
-**ikeshwani/ikeshwani** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Static site for GitHub Pages. No build step.
 
-Here are some ideas to get you started:
+## Publish
+1. Create a repo named `ikeshwani.github.io` (public) on GitHub.
+2. Put everything in this folder at the repo root (`index.html`, `assets/`, `.nojekyll`).
+3. Settings > Pages > Source: "Deploy from a branch", branch `main`, folder `/ (root)`.
+4. The site goes live at https://ikeshwani.github.io in a minute or two.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Preview locally
+`python3 -m http.server` in this folder, then open http://localhost:8000
+
+## Files
+- `assets/hc-core.js`: the 2D solver (vorticity-streamfunction, runs in the browser)
+- `assets/hc-ui.js`: canvas drawing and controls
+- `assets/convection.mp4`, `poster.jpg`: cropped Oceananigans.jl movie
